@@ -1,3 +1,4 @@
 FROM openjdk:26-ea-jdk
-ADD target/employee-build.jar employee-build.jar
-ENTRYPOINT [ "java", "-jar", "/employee-build.jar" ]
+WORKDIR /app
+COPY employee-build.jar app.jar
+ENTRYPOINT ["java", "-jar", "app.jar"]

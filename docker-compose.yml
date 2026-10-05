@@ -1,0 +1,27 @@
+services:
+  app:
+     build: .
+     ports:
+       - "8080:8080"
+     networks:
+       - my-network
+
+  postgres:
+     image: postgres:latest
+     environment:
+       POSTGRES_USER: easwar
+       POSTGRES_PASSWORD: 1234
+       POSTGRES_DB: employee
+     ports:
+       - "5432:5432"
+     networks:
+       - my-network
+     volumes:
+       - my-postgres-vol:/var/lib/postgresql
+
+networks:
+  my-network:
+    driver: bridge
+
+volumes:
+  my-postgres-vol:
